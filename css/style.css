@@ -900,6 +900,125 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cert-stats span { font-size: 0.78rem; color: var(--c-muted); }
 
 /* ════════════════════════════════════
+   AVANT / APRÈS SLIDER
+════════════════════════════════════ */
+.avantapres { padding: 120px 0; }
+
+.slider-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.ba-slider {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: col-resize;
+  user-select: none;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+  touch-action: none;
+}
+
+/* Les deux images, même taille */
+.ba-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+/* L'image APRÈS est la base (en dessous) */
+.ba-after {
+  display: block;
+}
+
+/* L'image AVANT clippe par la gauche selon la position du handle */
+.ba-before-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: 50%; /* valeur initiale, changée par JS */
+}
+.ba-before-wrap .ba-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: var(--slider-width, 860px); /* on force la même largeur que le parent */
+  max-height: 520px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ligne verticale */
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.ba-line {
+  flex: 1;
+  width: 3px;
+  background: linear-gradient(to bottom, rgba(245,158,11,0.3), #f59e0b 30%, #f59e0b 70%, rgba(245,158,11,0.3));
+  box-shadow: 0 0 12px rgba(245,158,11,0.5);
+}
+
+/* Bouton rond au milieu */
+.ba-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  filter: drop-shadow(0 2px 12px rgba(245,158,11,0.4));
+  transition: transform 0.2s, filter 0.2s;
+}
+.ba-btn svg { width: 48px; height: 48px; }
+.ba-slider:hover .ba-btn,
+.ba-slider.dragging .ba-btn {
+  transform: translateY(-50%) scale(1.12);
+  filter: drop-shadow(0 2px 20px rgba(245,158,11,0.7));
+}
+
+/* Labels Avant / Après */
+.ba-label {
+  position: absolute;
+  top: 18px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 100px;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.3s;
+}
+.ba-label-before {
+  left: 18px;
+  background: rgba(239,68,68,0.75);
+  backdrop-filter: blur(6px);
+}
+.ba-label-after {
+  right: 18px;
+  background: rgba(34,197,94,0.75);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 600px) {
+  .ba-btn { width: 40px; height: 40px; }
+  .ba-btn svg { width: 40px; height: 40px; }
+  .ba-img { max-height: 300px; }
+  .ba-before-wrap .ba-img { max-height: 300px; }
+}
+
+/* ════════════════════════════════════
    AVIS
 ════════════════════════════════════ */
 .avis { padding: 120px 0; overflow: hidden; }
