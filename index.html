@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Couvreur — Expert Toiture</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/logo.svg" alt="Le Couvreur" class="logo-img" />
+      <span class="logo-text">Le <strong>Couvreur</strong></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge reveal-up">
+      <span class="badge-dot"></span>
+      Artisan Qualifié RGE · Île-de-France
+    </div>
+    <h1 class="hero-title reveal-up delay-1">
+      L'excellence<br /><span class="gradient-text">de la toiture</span><br />à votre service
+    </h1>
+    <p class="hero-subtitle reveal-up delay-2">
+      Couverture, zinguerie, isolation, rénovation complète —
+      chaque projet traité avec la rigueur d'un artisan passionné.
+    </p>
+    <div class="hero-actions reveal-up delay-3">
+      <a href="#contact" class="btn btn-primary">
+        <span>Devis gratuit</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#realisations" class="btn btn-ghost">Voir nos chantiers</a>
+    </div>
+    <div class="hero-stats reveal-up delay-4">
+      <div class="stat">
+        <span class="stat-num" data-target="450">0</span><span class="stat-plus">+</span>
+        <span class="stat-label">Chantiers réalisés</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="18">0</span><span class="stat-plus">ans</span>
+        <span class="stat-label">D'expérience</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="100">0</span><span class="stat-plus">%</span>
+        <span class="stat-label">Clients satisfaits</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Ce que nous faisons</span>
+      <h2 class="section-title">Nos <span class="gradient-text">services</span></h2>
+      <p class="section-subtitle">De la rénovation à la construction neuve, maîtrise complète de tous types de toitures.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal-up" style="--delay:0.1s">
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 40L32 12L56 40H8Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect x="20" y="40" width="24" height="16" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M28 40V56" stroke="currentColor" stroke-width="2"/>
+            <path d="M36 40V56" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 34L32 16L50 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Couverture complète</h3>
+        <p>Pose et rénovation de tous types de toitures : tuiles, ardoises, zinc, bac acier. Travail soigné, matériaux garantis.</p>
+        <ul class="service-list">
+          <li>Toiture en tuiles terre cuite</li>
+          <li>Ardoise naturelle et synthétique</li>
+          <li>Bac acier et zinc</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+      <div class="service-card reveal-up featured" style="--delay:0.2s">
+        <div class="featured-badge">Populaire</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 36L32 10L56 36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 36V54H48V36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 54V42H40V54" stroke="currentColor" stroke-width="2"/>
+            <path d="M22 28L32 18L42 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="32" cy="24" r="3" fill="currentColor" opacity=".4"/>
+          </svg>
+        </div>
+        <h3>Rénovation toiture</h3>
+        <p>Diagnostic complet, dépose, traitement, refaçonnage des rives et faîtages. Votre toiture comme neuve avec garantie décennale.</p>
+        <ul class="service-list">
+          <li>Diagnostic humidité offert</li>
+          <li>Traitement hydrofuge</li>
+          <li>Garantie décennale incluse</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+      <div class="service-card reveal-up" style="--delay:0.3s">
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="20" width="44" height="30" rx="2" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M10 28H54" stroke="currentColor" stroke-width="2"/>
+            <path d="M22 20V14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M42 20V14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 36H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 42H26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M38 34L44 40L50 34" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Isolation thermique</h3>
+        <p>Isolation par l'extérieur (sarking) ou par l'intérieur. Réduisez vos factures jusqu'à 30 %. Éligible aux aides MaPrimeRénov'.</p>
+        <ul class="service-list">
+          <li>Isolation sarking</li>
+          <li>Laine de verre haute densité</li>
+          <li>Dossier CEE pris en charge</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+      <div class="service-card reveal-up" style="--delay:0.4s">
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 52V28L32 12L52 28V52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 52V36H44V52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M26 52V44H38V52" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 28H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M48 28H56" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Zinguerie</h3>
+        <p>Pose et remplacement de chéneaux, gouttières, solins, noues. Étanchéité irréprochable pour protéger votre bâtiment.</p>
+        <ul class="service-list">
+          <li>Chéneaux & gouttières zinc</li>
+          <li>Solins et noues</li>
+          <li>Velux et fenêtres de toit</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+      <div class="service-card reveal-up" style="--delay:0.5s">
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M32 22V32L38 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 12L18 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M42 12L46 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Urgences &amp; fuites</h3>
+        <p>Intervention rapide 7j/7 en cas de fuite, tuile cassée, infiltration. Bâchage d'urgence et réparation durable en 24 h.</p>
+        <ul class="service-list">
+          <li>Intervention sous 24 h</li>
+          <li>Bâchage d'urgence</li>
+          <li>Devis immédiat sur place</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+      <div class="service-card reveal-up" style="--delay:0.6s">
+        <div class="service-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="14" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M8 24H56" stroke="currentColor" stroke-width="2"/>
+            <path d="M20 14V24" stroke="currentColor" stroke-width="2"/>
+            <path d="M44 14V24" stroke="currentColor" stroke-width="2"/>
+            <circle cx="32" cy="38" r="6" stroke="currentColor" stroke-width="2"/>
+            <path d="M32 32V34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M32 42V44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Nettoyage & entretien</h3>
+        <p>Nettoyage haute pression, traitement anti-mousse, hydrofugation. Prolongez la durée de vie de votre toiture à moindre coût.</p>
+        <ul class="service-list">
+          <li>Démoussage haute pression</li>
+          <li>Hydrofugation longue durée</li>
+          <li>Contrat entretien annuel</li>
+        </ul>
+        <a href="#contact" class="service-link">En savoir plus →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RÉALISATIONS ═══════════════════ -->
+<section class="realisations" id="realisations">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Nos chantiers</span>
+      <h2 class="section-title">Réalisations <span class="gradient-text">récentes</span></h2>
+      <p class="section-subtitle">Des projets menés avec soin, de la dépose à la livraison finale.</p>
+    </div>
+    <div class="filter-bar reveal-up">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="renovation">Rénovation</button>
+      <button class="filter-btn" data-filter="neuf">Construction neuve</button>
+      <button class="filter-btn" data-filter="isolation">Isolation</button>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.1s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #b45309 0%, #78350f 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><path d="M10 48L40 12L70 48H10Z" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M24 48V36H56V48" stroke="white" stroke-width="2"/><path d="M34 48V40H46V48" stroke="white" stroke-width="2"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Rénovation</span>
+          <h4>Rénovation toiture ardoise · Versailles</h4>
+          <p>Dépose complète + repose ardoise naturelle + solins zinc</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up large" data-category="neuf" style="--delay:0.15s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #1e3a5f 0%, #0f2035 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><path d="M8 44L40 8L72 44" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M20 44V54H60V44" stroke="white" stroke-width="2"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Construction neuve</span>
+          <h4>Maison individuelle · Rambouillet</h4>
+          <p>Charpente + tuiles terre cuite + isolation sarking</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up" data-category="isolation" style="--delay:0.2s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #065f46 0%, #022c22 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><rect x="10" y="15" width="60" height="35" rx="2" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M10 28H70" stroke="white" stroke-width="1.5"/><path d="M10 38H70" stroke="white" stroke-width="1.5"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Isolation</span>
+          <h4>Isolation sarking · Fontainebleau</h4>
+          <p>140 mm laine de roche + membrane pare-vapeur</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.25s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #7c2d12 0%, #431407 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><path d="M10 48L40 12L70 48H10Z" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Rénovation</span>
+          <h4>Démoussage + hydrofugation · Mantes</h4>
+          <p>Nettoyage HP + traitement anti-mousse 10 ans</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up large" data-category="renovation" style="--delay:0.3s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><path d="M8 44L40 8L72 44" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M20 44V56H60V44" stroke="white" stroke-width="2"/><path d="M32 56V46H48V56" stroke="white" stroke-width="2"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Rénovation</span>
+          <h4>Rénovation zinc & zinguerie · Paris 16e</h4>
+          <p>Chéneaux zinc, gouttières, solins refaits à neuf</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up" data-category="neuf" style="--delay:0.35s">
+        <div class="gallery-img" style="background: linear-gradient(135deg, #374151 0%, #111827 100%);">
+          <div class="gallery-placeholder">
+            <svg viewBox="0 0 80 60" fill="none"><rect x="12" y="10" width="56" height="40" rx="2" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M12 24H68" stroke="white" stroke-width="1.5"/></svg>
+            <span>Photo chantier</span>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Construction neuve</span>
+          <h4>Bâtiment bac acier · Melun</h4>
+          <p>Couverture bac acier thermolaqué + isolation intégrée</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-cta reveal-up">
+      <a href="#contact" class="btn btn-primary">Parlez-nous de votre projet</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EXPERTISE BANNER ═══════════════════ -->
+<section class="expertise" id="expertise">
+  <div class="expertise-inner">
+    <div class="expertise-content reveal-up">
+      <span class="section-tag light">Notre engagement</span>
+      <h2 class="section-title white">Pourquoi choisir<br /><span class="gradient-text-light">Le Couvreur ?</span></h2>
+      <p class="expertise-desc">Artisan indépendant certifié RGE, nous intervenons sans sous-traitance. Chaque chantier est suivi personnellement par notre équipe — du diagnostic à la livraison.</p>
+      <div class="expertise-features">
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Certifié RGE Qualibat</strong>
+            <span>Éligible aux aides de l'État (MaPrimeRénov', CEE)</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Garantie décennale</strong>
+            <span>Tous nos travaux sont couverts 10 ans</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Devis gratuit & détaillé</strong>
+            <span>Réponse sous 48 h, sans engagement</span>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✓</div>
+          <div>
+            <strong>Zéro sous-traitance</strong>
+            <span>Nos propres équipes sur chaque chantier</span>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary">Demander un devis</a>
+    </div>
+    <div class="expertise-visual reveal-up delay-2">
+      <div class="expertise-card">
+        <div class="expertise-card-inner">
+          <div class="cert-badge">
+            <svg viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="36" stroke="url(#g1)" stroke-width="3"/>
+              <path d="M28 40L36 48L52 32" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="g1" x1="4" y1="4" x2="76" y2="76">
+                  <stop stop-color="#f59e0b"/>
+                  <stop offset="1" stop-color="#ef4444"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h3>Qualibat RGE</h3>
+          <p>N° 7711 — Couverture & Zinguerie</p>
+          <div class="cert-divider"></div>
+          <div class="cert-stats">
+            <div><strong>18</strong><span>ans d'activité</span></div>
+            <div><strong>450+</strong><span>chantiers</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ AVIS ═══════════════════ -->
+<section class="avis" id="avis">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Témoignages</span>
+      <h2 class="section-title">Ce que disent <span class="gradient-text">nos clients</span></h2>
+    </div>
+    <div class="avis-track-wrap">
+      <div class="avis-track">
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Intervention rapide suite à une fuite. Diagnostic précis, réparation soignée. Équipe sérieuse et propre. Je recommande vivement. »</p>
+          <div class="avis-author">
+            <div class="avatar">MR</div>
+            <div><strong>M. Renard</strong><span>Versailles (78)</span></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Rénovation complète de ma toiture en ardoise. Travail impeccable, prix honnête, respect des délais. Merci à toute l'équipe ! »</p>
+          <div class="avis-author">
+            <div class="avatar">SL</div>
+            <div><strong>Mme Lefebvre</strong><span>Rambouillet (78)</span></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Devis clair, explication détaillée des travaux. Résultat au-delà de mes attentes. Mon toit est comme neuf après 40 ans. »</p>
+          <div class="avis-author">
+            <div class="avatar">JD</div>
+            <div><strong>J. Dupont</strong><span>Fontainebleau (77)</span></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Isolation sarking réalisée proprement, en une semaine chrono. Économies d'énergie constatées dès le premier hiver. »</p>
+          <div class="avis-author">
+            <div class="avatar">AC</div>
+            <div><strong>A. Charlier</strong><span>Mantes-la-Jolie (78)</span></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Nettoyage et hydrofugation de qualité professionnelle. Très content du résultat, la mousse n'a pas repoussé depuis 2 ans. »</p>
+          <div class="avis-author">
+            <div class="avatar">PB</div>
+            <div><strong>P. Bernard</strong><span>Melun (77)</span></div>
+          </div>
+        </div>
+        <!-- duplicate for infinite loop -->
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Intervention rapide suite à une fuite. Diagnostic précis, réparation soignée. Équipe sérieuse et propre. Je recommande vivement. »</p>
+          <div class="avis-author">
+            <div class="avatar">MR</div>
+            <div><strong>M. Renard</strong><span>Versailles (78)</span></div>
+          </div>
+        </div>
+        <div class="avis-card">
+          <div class="stars">★★★★★</div>
+          <p>« Rénovation complète de ma toiture en ardoise. Travail impeccable, prix honnête, respect des délais. Merci à toute l'équipe ! »</p>
+          <div class="avis-author">
+            <div class="avatar">SL</div>
+            <div><strong>Mme Lefebvre</strong><span>Rambouillet (78)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-up">
+        <span class="section-tag">Contact</span>
+        <h2 class="section-title">Obtenir un <span class="gradient-text">devis gratuit</span></h2>
+        <p class="contact-desc">Remplissez le formulaire ou contactez-nous directement. Réponse garantie sous 48 h.</p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.81 19.79 19.79 0 01.95 2.18 2 2 0 012.95 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <strong>Téléphone</strong>
+              <span>01 XX XX XX XX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>contact@lecouvreur.fr</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Zone d'intervention</strong>
+              <span>Île-de-France (78, 77, 75, 92, 95)</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Horaires</strong>
+              <span>Lun–Sam · 7h30 – 18h00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal-up delay-2">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom complet *</label>
+              <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="tel">Téléphone *</label>
+              <input type="tel" id="tel" name="tel" placeholder="06 XX XX XX XX" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="jean.dupont@email.fr" />
+          </div>
+          <div class="form-group">
+            <label for="service">Type de travaux</label>
+            <select id="service" name="service">
+              <option value="">Sélectionnez un service…</option>
+              <option>Rénovation toiture</option>
+              <option>Construction neuve</option>
+              <option>Isolation thermique</option>
+              <option>Zinguerie</option>
+              <option>Urgence / Fuite</option>
+              <option>Nettoyage / Entretien</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Description du projet</label>
+            <textarea id="message" name="message" rows="4" placeholder="Décrivez votre projet, la surface approximative, l'urgence…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <span>Envoyer ma demande</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="form-note">* Champs obligatoires · Réponse sous 48 h · Devis 100 % gratuit</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✓</div>
+          <h3>Message envoyé !</h3>
+          <p>Nous vous recontacterons dans les 48 heures.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <img src="assets/logo.svg" alt="Le Couvreur" class="logo-img" />
+          <span class="logo-text">Le <strong>Couvreur</strong></span>
+        </a>
+        <p>Artisan couvreur certifié RGE, au service des particuliers et professionnels d'Île-de-France depuis 2006.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Couverture complète</a></li>
+          <li><a href="#services">Rénovation toiture</a></li>
+          <li><a href="#services">Isolation thermique</a></li>
+          <li><a href="#services">Zinguerie</a></li>
+          <li><a href="#services">Urgences & fuites</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#expertise">Notre expertise</a></li>
+          <li><a href="#realisations">Réalisations</a></li>
+          <li><a href="#avis">Avis clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>01 XX XX XX XX</li>
+          <li>contact@lecouvreur.fr</li>
+          <li>Île-de-France</li>
+          <li>Lun–Sam · 7h30–18h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Le Couvreur · SARL au capital de 10 000 € · SIRET 000 000 000 00000</p>
+      <p>Mentions légales · Politique de confidentialité</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

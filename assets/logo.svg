@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="lg1" x1="4" y1="4" x2="44" y2="44">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+  <!-- Roof silhouette -->
+  <path d="M6 30L24 10L42 30H6Z" fill="url(#lg1)" opacity="0.95"/>
+  <!-- House body -->
+  <rect x="13" y="30" width="22" height="14" rx="1" fill="url(#lg1)" opacity="0.7"/>
+  <!-- Door -->
+  <rect x="20" y="36" width="8" height="8" rx="1" fill="#0a0a0f"/>
+  <!-- Chimney -->
+  <rect x="32" y="18" width="5" height="10" rx="1" fill="url(#lg1)"/>
+  <!-- Smoke -->
+  <path d="M34 16 Q35 12 34 9" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M36 15 Q38 11 36 8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+</svg>
