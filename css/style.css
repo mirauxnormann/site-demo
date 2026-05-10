@@ -934,20 +934,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
 }
 
-/* L'image AVANT clippe par la gauche selon la position du handle */
-.ba-before-wrap {
+/* L'image AVANT est superposée et clippée par clip-path */
+.ba-before {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  width: 50%; /* valeur initiale, changée par JS */
-}
-.ba-before-wrap .ba-img {
-  position: absolute;
-  top: 0; left: 0;
-  width: var(--slider-width, 860px); /* on force la même largeur que le parent */
-  max-height: 520px;
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  clip-path: inset(0 50% 0 0);
 }
 
 /* Ligne verticale */
@@ -1015,7 +1009,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .ba-btn { width: 40px; height: 40px; }
   .ba-btn svg { width: 40px; height: 40px; }
   .ba-img { max-height: 300px; }
-  .ba-before-wrap .ba-img { max-height: 300px; }
 }
 
 /* ════════════════════════════════════

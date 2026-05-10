@@ -177,9 +177,9 @@ lightbox.addEventListener('touchend', e => {
 
 // ─── Avant / Après slider ───
 (function () {
-  const slider      = document.getElementById('baSlider');
-  const beforeWrap  = document.getElementById('baBeforeWrap');
-  const handle      = document.getElementById('baHandle');
+  const slider = document.getElementById('baSlider');
+  const before = document.getElementById('baBefore');
+  const handle = document.getElementById('baHandle');
   if (!slider) return;
 
   let dragging = false;
@@ -187,29 +187,11 @@ lightbox.addEventListener('touchend', e => {
   function setPosition(clientX) {
     const rect = slider.getBoundingClientRect();
     let pct = (clientX - rect.left) / rect.width;
-    pct = Math.min(Math.max(pct, 0.03), 0.97); // limites 3%–97%
+    pct = Math.min(Math.max(pct, 0.03), 0.97);
 
-    const pctPx = pct * 100;
-    beforeWrap.style.width = pctPx + '%';
-    handle.style.left      = pctPx + '%';
-
-    // Maintient la largeur réelle de l'image avant (pour object-fit: cover)
-    const realW = slider.offsetWidth;
-    beforeWrap.querySelector('.ba-img').style.width = realW + 'px';
+    before.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
+    handle.style.left = (pct * 100) + '%';
   }
-
-  // Init à 50%
-  function init() {
-    beforeWrap.querySelector('.ba-img').style.width = slider.offsetWidth + 'px';
-  }
-  window.addEventListener('resize', init);
-  // Attend que les images soient chargées
-  const imgs = slider.querySelectorAll('img');
-  let loaded = 0;
-  imgs.forEach(img => {
-    if (img.complete) { loaded++; if (loaded === imgs.length) init(); }
-    else img.addEventListener('load', () => { loaded++; if (loaded === imgs.length) init(); });
-  });
 
   // Mouse
   slider.addEventListener('mousedown', e => {
