@@ -228,116 +228,208 @@
     <div class="section-header reveal-up">
       <span class="section-tag">Nos chantiers</span>
       <h2 class="section-title">Réalisations <span class="gradient-text">récentes</span></h2>
-      <p class="section-subtitle">Des projets menés avec soin, de la dépose à la livraison finale.</p>
+      <p class="section-subtitle">Cliquez sur une photo pour l'agrandir et lire le détail du chantier.</p>
     </div>
+
     <div class="filter-bar reveal-up">
       <button class="filter-btn active" data-filter="all">Tous</button>
-      <button class="filter-btn" data-filter="renovation">Rénovation</button>
-      <button class="filter-btn" data-filter="neuf">Construction neuve</button>
-      <button class="filter-btn" data-filter="isolation">Isolation</button>
-    </div>
-    <!-- Transformation avant/pendant/après -->
-    <div class="aps-strip reveal-up">
-      <div class="aps-label">Un chantier, trois étapes</div>
-      <div class="aps-grid">
-        <div class="aps-item">
-          <span class="aps-tag avant">Avant</span>
-          <img src="assets/tuiles-avant.jpg" alt="Toiture avant rénovation" loading="lazy" />
-        </div>
-        <div class="aps-arrow">→</div>
-        <div class="aps-item">
-          <span class="aps-tag pendant">Pendant</span>
-          <img src="assets/tuiles-pendant.jpg" alt="Chantier en cours" loading="lazy" />
-        </div>
-        <div class="aps-arrow">→</div>
-        <div class="aps-item">
-          <span class="aps-tag apres">Après</span>
-          <img src="assets/tuiles-apres.jpg" alt="Toiture après rénovation" loading="lazy" />
-        </div>
-      </div>
+      <button class="filter-btn" data-filter="toiture">Toiture</button>
+      <button class="filter-btn" data-filter="ravalement">Ravalement de façade</button>
+      <button class="filter-btn" data-filter="traitement">Traitement de façade</button>
     </div>
 
-    <div class="gallery-grid">
-      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.1s">
-        <div class="gallery-img photo">
-          <img src="assets/tuiles-avant.jpg" alt="Toiture avant rénovation" loading="lazy" />
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Rénovation</span>
-          <h4>État initial · Tuiles abîmées</h4>
-          <p>Diagnostic complet avant dépose — tuiles cassées, mousses, infiltrations</p>
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- ── TOITURE ── -->
+      <div class="gallery-item reveal-up"
+           data-category="toiture" style="--delay:0.05s"
+           data-src="assets/tuiles-avant.jpg"
+           data-title="État initial · Tuiles dégradées"
+           data-cat="Toiture"
+           data-desc="Diagnostic effectué avant dépose : tuiles fissurées, présence importante de mousse et infiltrations détectées en noue. Un relevé complet de la charpente a confirmé l'absence de pourrissement des liteaux.">
+        <div class="gallery-img photo"><img src="assets/tuiles-avant.jpg" alt="Toiture avant" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Toiture</span>
+          <h4>État initial · Tuiles dégradées</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up large" data-category="renovation" style="--delay:0.15s">
-        <div class="gallery-img photo">
-          <img src="assets/tuiles-pendant.jpg" alt="Chantier de rénovation en cours" loading="lazy" />
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Rénovation</span>
+      <div class="gallery-item reveal-up large"
+           data-category="toiture" style="--delay:0.1s"
+           data-src="assets/tuiles-pendant.jpg"
+           data-title="Chantier en cours · Repose des tuiles"
+           data-cat="Toiture"
+           data-desc="Dépose complète des anciens éléments, mise en place d'un nouveau liteau traité classe 4, repose rangée par rangée avec fixation mécanique à chaque virole. Pureau respecté selon le DTU 40.21.">
+        <div class="gallery-img photo"><img src="assets/tuiles-pendant.jpg" alt="Chantier toiture en cours" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Toiture</span>
           <h4>Chantier en cours · Repose des tuiles</h4>
-          <p>Repose rangée par rangée, fixation mécanique, faîtage scellé</p>
+          <span class="go-zoom">🔍 Agrandir</span>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.2s">
-        <div class="gallery-img photo">
-          <img src="assets/tuiles-apres.jpg" alt="Toiture rénovée" loading="lazy" />
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Rénovation</span>
-          <h4>Résultat final · Toiture comme neuve</h4>
-          <p>Livraison propre, garantie décennale remise en main propre</p>
-        </div>
-      </div>
-
-      <div class="gallery-item reveal-up" data-category="isolation" style="--delay:0.25s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #065f46 0%, #022c22 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><rect x="10" y="15" width="60" height="35" rx="2" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M10 28H70" stroke="white" stroke-width="1.5"/><path d="M10 38H70" stroke="white" stroke-width="1.5"/></svg>
-            <span>Photo chantier</span>
-          </div>
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Isolation</span>
-          <h4>Isolation sarking · Fontainebleau</h4>
-          <p>140 mm laine de roche + membrane pare-vapeur</p>
+      <div class="gallery-item reveal-up"
+           data-category="toiture" style="--delay:0.15s"
+           data-src="assets/tuiles-apres.jpg"
+           data-title="Rénovation terminée · Toiture comme neuve"
+           data-cat="Toiture"
+           data-desc="Faîtage scellé au mortier de chaux, rives refaites et tuiles de rive posées. Nettoyage complet du chantier, livraison avec garantie décennale et certificat Qualibat remis au propriétaire.">
+        <div class="gallery-img photo"><img src="assets/tuiles-apres.jpg" alt="Toiture rénovée" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Toiture</span>
+          <h4>Rénovation terminée · Toiture comme neuve</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up large" data-category="renovation" style="--delay:0.3s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><path d="M8 44L40 8L72 44" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M20 44V56H60V44" stroke="white" stroke-width="2"/><path d="M32 56V46H48V56" stroke="white" stroke-width="2"/></svg>
-            <span>Photo chantier</span>
-          </div>
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Rénovation</span>
-          <h4>Rénovation zinc & zinguerie · Paris 16e</h4>
-          <p>Chéneaux zinc, gouttières, solins refaits à neuf</p>
+      <div class="gallery-item reveal-up large"
+           data-category="toiture" style="--delay:0.2s"
+           data-src="assets/toiture-avant.jpg"
+           data-title="Ancienne couverture · Avant intervention"
+           data-cat="Toiture"
+           data-desc="Vieille couverture avec tuiles grand moule glissées hors de leurs crochets, défaut d'étanchéité en noue centrale et liteaux présentant des signes avancés de dégradation. Intervention planifiée sous 15 jours.">
+        <div class="gallery-img photo"><img src="assets/toiture-avant.jpg" alt="Ancienne toiture avant travaux" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Toiture</span>
+          <h4>Ancienne couverture · Avant intervention</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up" data-category="neuf" style="--delay:0.35s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #374151 0%, #111827 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><rect x="12" y="10" width="56" height="40" rx="2" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M12 24H68" stroke="white" stroke-width="1.5"/></svg>
-            <span>Photo chantier</span>
-          </div>
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Construction neuve</span>
-          <h4>Bâtiment bac acier · Melun</h4>
-          <p>Couverture bac acier thermolaqué + isolation intégrée</p>
+      <div class="gallery-item reveal-up"
+           data-category="toiture" style="--delay:0.25s"
+           data-src="assets/toiture-apres-02.jpg"
+           data-title="Rénovation complète · Résultat final"
+           data-cat="Toiture"
+           data-desc="Nouvelle couverture en tuiles terre cuite grand moule, zinguerie en zinc naturel entièrement refaite (chéneaux, noues, solins). Durée d'intervention : 6 jours. Surface : 180 m².">
+        <div class="gallery-img photo"><img src="assets/toiture-apres-02.jpg" alt="Nouvelle toiture après rénovation" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Toiture</span>
+          <h4>Rénovation complète · Résultat final</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
         </div>
       </div>
-    </div>
+
+      <!-- ── RAVALEMENT ── -->
+      <div class="gallery-item reveal-up large"
+           data-category="ravalement" style="--delay:0.05s"
+           data-src="assets/facade-avant.jpg"
+           data-title="Façade fissurée · Avant ravalement"
+           data-cat="Ravalement de façade"
+           data-desc="Enduit ancien fissuré sur toute la surface, décollements importants au niveau des appuis de fenêtres et traces d'humidité remontante sur le soubassement. Bâtiment des années 1970 sans entretien depuis 20 ans.">
+        <div class="gallery-img photo"><img src="assets/facade-avant.jpg" alt="Façade avant ravalement" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Ravalement</span>
+          <h4>Façade fissurée · Avant ravalement</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up"
+           data-category="ravalement" style="--delay:0.1s"
+           data-src="assets/facade-apres.jpg"
+           data-title="Façade rénovée · Après ravalement"
+           data-cat="Ravalement de façade"
+           data-desc="Dépose de l'ancien enduit, ragréage des fissures à l'enduit fibré, application d'un enduit monocouche projeté taloché grain fin. Finition teintée dans la masse avec traitement hydrofuge 10 ans. Retour client : très satisfait.">
+        <div class="gallery-img photo"><img src="assets/facade-apres.jpg" alt="Façade après ravalement" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Ravalement</span>
+          <h4>Façade rénovée · Après ravalement</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up"
+           data-category="ravalement" style="--delay:0.15s"
+           data-src="assets/facade-2.jpg"
+           data-title="En cours · Projection de l'enduit"
+           data-cat="Ravalement de façade"
+           data-desc="Application de l'enduit monocouche par projection mécanique sur armature fibre de verre. Deux passes de 8 mm chacune, talochage à la règle aluminium pour planéité parfaite. Séchage 7 jours avant finition.">
+        <div class="gallery-img photo"><img src="assets/facade-2.jpg" alt="Projection enduit façade" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Ravalement</span>
+          <h4>En cours · Projection de l'enduit</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up"
+           data-category="ravalement" style="--delay:0.2s"
+           data-src="assets/facade-3.jpg"
+           data-title="Façade pierre · Rejointoiement"
+           data-cat="Ravalement de façade"
+           data-desc="Piquage des joints dégradés sur une profondeur de 3 cm, dépoussiérage à l'air comprimé et humidification avant rejointoiement à la chaux naturelle NHL 3,5. Finition brossée pour respecter l'aspect d'origine.">
+        <div class="gallery-img photo"><img src="assets/facade-3.jpg" alt="Rejointoiement façade pierre" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Ravalement</span>
+          <h4>Façade pierre · Rejointoiement</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+      <!-- ── TRAITEMENT ── -->
+      <div class="gallery-item reveal-up large"
+           data-category="traitement" style="--delay:0.05s"
+           data-src="assets/nettoyage-facade-avant.jpg"
+           data-title="Façade encrassée · Avant nettoyage"
+           data-cat="Traitement de façade"
+           data-desc="Dépôts de mousse verte, algues et salissures atmosphériques accumulés sur plusieurs années sans entretien. L'encrassement favorise les infiltrations et dégrade l'enduit sous-jacent. Traitement préventif recommandé tous les 5 à 7 ans.">
+        <div class="gallery-img photo"><img src="assets/nettoyage-facade-avant.jpg" alt="Façade avant nettoyage" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Traitement</span>
+          <h4>Façade encrassée · Avant nettoyage</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up"
+           data-category="traitement" style="--delay:0.1s"
+           data-src="assets/nettoyage-facade-apres.jpg"
+           data-title="Façade traitée · Après nettoyage"
+           data-cat="Traitement de façade"
+           data-desc="Nettoyage haute pression à eau chaude (150 bars), application d'un biocide fongicide-algicide par pulvérisation, rinçage, puis application d'un traitement hydrofuge longue durée pénétrant (garantie 10 ans). Façade comme neuve.">
+        <div class="gallery-img photo"><img src="assets/nettoyage-facade-apres.jpg" alt="Façade après nettoyage et traitement" loading="lazy"/></div>
+        <div class="gallery-overlay">
+          <span class="go-cat">Traitement</span>
+          <h4>Façade traitée · Après nettoyage</h4>
+          <span class="go-zoom">🔍 Agrandir</span>
+        </div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
     <div class="gallery-cta reveal-up">
       <a href="#contact" class="btn btn-primary">Parlez-nous de votre projet</a>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════ LIGHTBOX ═══════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vue agrandie">
+  <button class="lb-close" id="lbClose" aria-label="Fermer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Photo précédente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Photo suivante">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="lb-backdrop" id="lbBackdrop"></div>
+  <div class="lb-container">
+    <div class="lb-img-wrap">
+      <img id="lbImg" src="" alt="" />
+      <div class="lb-loader" id="lbLoader"></div>
+    </div>
+    <div class="lb-info">
+      <span class="lb-cat" id="lbCat"></span>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="lb-counter"><span id="lbCurrent">1</span> / <span id="lbTotal">1</span></div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════ EXPERTISE BANNER ═══════════════════ -->
 <section class="expertise" id="expertise">

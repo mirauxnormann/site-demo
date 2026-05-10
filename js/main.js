@@ -25,19 +25,16 @@ navLinks.querySelectorAll('a').forEach(link => {
 // ─── Reveal on scroll ───
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
 // ─── Counter animation ───
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
-  const duration = 1800;
-  const step = target / (duration / 16);
+  const step = target / (1800 / 16);
   let current = 0;
   const timer = setInterval(() => {
     current = Math.min(current + step, target);
@@ -45,7 +42,6 @@ function animateCounter(el) {
     if (current >= target) clearInterval(timer);
   }, 16);
 }
-
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -54,13 +50,13 @@ const statsObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.5 });
-
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) statsObserver.observe(heroStats);
 
-// ─── Gallery filter ───
+// ─── Gallery filter + lightbox integration ───
 const filterBtns = document.querySelectorAll('.filter-btn');
-const galleryItems = document.querySelectorAll('.gallery-item');
+let allItems = Array.from(document.querySelectorAll('.gallery-item[data-src]'));
+let visibleItems = [...allItems];
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -68,37 +64,126 @@ filterBtns.forEach(btn => {
     btn.classList.add('active');
 
     const filter = btn.dataset.filter;
-    galleryItems.forEach(item => {
+    visibleItems = filter === 'all' ? [...allItems] : allItems.filter(i => i.dataset.category === filter);
+
+    allItems.forEach(item => {
       const match = filter === 'all' || item.dataset.category === filter;
-      item.style.transition = 'opacity 0.35s, transform 0.35s';
+      item.style.transition = 'opacity 0.3s, transform 0.3s';
       if (match) {
         item.style.opacity = '1';
         item.style.transform = 'scale(1)';
         item.style.display = '';
       } else {
         item.style.opacity = '0';
-        item.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          if (btn.dataset.filter !== 'all' && item.dataset.category !== btn.dataset.filter) {
-            item.style.display = 'none';
-          }
-        }, 350);
+        item.style.transform = 'scale(0.94)';
+        setTimeout(() => { item.style.display = 'none'; }, 300);
       }
     });
   });
 });
 
+// ─── Lightbox ───
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbTitle   = document.getElementById('lbTitle');
+const lbDesc    = document.getElementById('lbDesc');
+const lbCat     = document.getElementById('lbCat');
+const lbCurrent = document.getElementById('lbCurrent');
+const lbTotal   = document.getElementById('lbTotal');
+const lbLoader  = document.getElementById('lbLoader');
+const lbClose   = document.getElementById('lbClose');
+const lbPrev    = document.getElementById('lbPrev');
+const lbNext    = document.getElementById('lbNext');
+const lbBackdrop = document.getElementById('lbBackdrop');
+
+let lbIndex = 0;
+
+function lbOpen(index) {
+  lbIndex = index;
+  lbRender();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbClose_() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbRender() {
+  const item = visibleItems[lbIndex];
+  if (!item) return;
+
+  // loader
+  lbLoader.classList.remove('hidden');
+  lbImg.classList.add('loading');
+
+  const src = item.dataset.src;
+  const img = new Image();
+  img.onload = () => {
+    lbImg.src = src;
+    lbImg.alt = item.dataset.title || '';
+    lbImg.classList.remove('loading');
+    lbLoader.classList.add('hidden');
+  };
+  img.src = src;
+
+  lbTitle.textContent   = item.dataset.title || '';
+  lbDesc.textContent    = item.dataset.desc  || '';
+  lbCat.textContent     = item.dataset.cat   || '';
+  lbCurrent.textContent = lbIndex + 1;
+  lbTotal.textContent   = visibleItems.length;
+
+  lbPrev.disabled = lbIndex === 0;
+  lbNext.disabled = lbIndex === visibleItems.length - 1;
+}
+
+function lbGo(dir) {
+  const next = lbIndex + dir;
+  if (next >= 0 && next < visibleItems.length) {
+    lbIndex = next;
+    lbRender();
+  }
+}
+
+// Open on click
+allItems.forEach((item, _) => {
+  item.style.cursor = 'pointer';
+  item.addEventListener('click', () => {
+    const idx = visibleItems.indexOf(item);
+    if (idx !== -1) lbOpen(idx);
+  });
+});
+
+lbClose.addEventListener('click', lbClose_);
+lbBackdrop.addEventListener('click', lbClose_);
+lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lbGo(-1); });
+lbNext.addEventListener('click', (e) => { e.stopPropagation(); lbGo(1); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')      lbClose_();
+  if (e.key === 'ArrowLeft')   lbGo(-1);
+  if (e.key === 'ArrowRight')  lbGo(1);
+});
+
+// Touch swipe on lightbox
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) lbGo(dx < 0 ? 1 : -1);
+});
+
 // ─── Contact form ───
 const form = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
-
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.querySelector('span').textContent = 'Envoi en cours…';
-
     setTimeout(() => {
       form.style.display = 'none';
       formSuccess.classList.add('show');
@@ -106,10 +191,9 @@ if (form) {
   });
 }
 
-// ─── Smooth active nav link highlight ───
-const sections = document.querySelectorAll('section[id]');
+// ─── Active nav link ───
+const sections   = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
 const navObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -119,16 +203,15 @@ const navObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
-
 sections.forEach(s => navObserver.observe(s));
 
 // ─── Parallax hero shapes ───
 window.addEventListener('mousemove', (e) => {
   const shapes = document.querySelectorAll('.shape');
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const x = (e.clientX / window.innerWidth  - 0.5) * 20;
   const y = (e.clientY / window.innerHeight - 0.5) * 20;
   shapes.forEach((s, i) => {
-    const factor = (i + 1) * 0.4;
-    s.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    const f = (i + 1) * 0.4;
+    s.style.transform = `translate(${x*f}px, ${y*f}px)`;
   });
 });
