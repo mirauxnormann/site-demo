@@ -236,36 +236,62 @@
       <button class="filter-btn" data-filter="neuf">Construction neuve</button>
       <button class="filter-btn" data-filter="isolation">Isolation</button>
     </div>
+    <!-- Transformation avant/pendant/après -->
+    <div class="aps-strip reveal-up">
+      <div class="aps-label">Un chantier, trois étapes</div>
+      <div class="aps-grid">
+        <div class="aps-item">
+          <span class="aps-tag avant">Avant</span>
+          <img src="assets/tuiles-avant.jpg" alt="Toiture avant rénovation" loading="lazy" />
+        </div>
+        <div class="aps-arrow">→</div>
+        <div class="aps-item">
+          <span class="aps-tag pendant">Pendant</span>
+          <img src="assets/tuiles-pendant.jpg" alt="Chantier en cours" loading="lazy" />
+        </div>
+        <div class="aps-arrow">→</div>
+        <div class="aps-item">
+          <span class="aps-tag apres">Après</span>
+          <img src="assets/tuiles-apres.jpg" alt="Toiture après rénovation" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
     <div class="gallery-grid">
       <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.1s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #b45309 0%, #78350f 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><path d="M10 48L40 12L70 48H10Z" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M24 48V36H56V48" stroke="white" stroke-width="2"/><path d="M34 48V40H46V48" stroke="white" stroke-width="2"/></svg>
-            <span>Photo chantier</span>
-          </div>
+        <div class="gallery-img photo">
+          <img src="assets/tuiles-avant.jpg" alt="Toiture avant rénovation" loading="lazy" />
         </div>
         <div class="gallery-info">
           <span class="gallery-cat">Rénovation</span>
-          <h4>Rénovation toiture ardoise · Versailles</h4>
-          <p>Dépose complète + repose ardoise naturelle + solins zinc</p>
+          <h4>État initial · Tuiles abîmées</h4>
+          <p>Diagnostic complet avant dépose — tuiles cassées, mousses, infiltrations</p>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up large" data-category="neuf" style="--delay:0.15s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #1e3a5f 0%, #0f2035 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><path d="M8 44L40 8L72 44" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M20 44V54H60V44" stroke="white" stroke-width="2"/></svg>
-            <span>Photo chantier</span>
-          </div>
+      <div class="gallery-item reveal-up large" data-category="renovation" style="--delay:0.15s">
+        <div class="gallery-img photo">
+          <img src="assets/tuiles-pendant.jpg" alt="Chantier de rénovation en cours" loading="lazy" />
         </div>
         <div class="gallery-info">
-          <span class="gallery-cat">Construction neuve</span>
-          <h4>Maison individuelle · Rambouillet</h4>
-          <p>Charpente + tuiles terre cuite + isolation sarking</p>
+          <span class="gallery-cat">Rénovation</span>
+          <h4>Chantier en cours · Repose des tuiles</h4>
+          <p>Repose rangée par rangée, fixation mécanique, faîtage scellé</p>
         </div>
       </div>
 
-      <div class="gallery-item reveal-up" data-category="isolation" style="--delay:0.2s">
+      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.2s">
+        <div class="gallery-img photo">
+          <img src="assets/tuiles-apres.jpg" alt="Toiture rénovée" loading="lazy" />
+        </div>
+        <div class="gallery-info">
+          <span class="gallery-cat">Rénovation</span>
+          <h4>Résultat final · Toiture comme neuve</h4>
+          <p>Livraison propre, garantie décennale remise en main propre</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal-up" data-category="isolation" style="--delay:0.25s">
         <div class="gallery-img" style="background: linear-gradient(135deg, #065f46 0%, #022c22 100%);">
           <div class="gallery-placeholder">
             <svg viewBox="0 0 80 60" fill="none"><rect x="10" y="15" width="60" height="35" rx="2" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/><path d="M10 28H70" stroke="white" stroke-width="1.5"/><path d="M10 38H70" stroke="white" stroke-width="1.5"/></svg>
@@ -276,20 +302,6 @@
           <span class="gallery-cat">Isolation</span>
           <h4>Isolation sarking · Fontainebleau</h4>
           <p>140 mm laine de roche + membrane pare-vapeur</p>
-        </div>
-      </div>
-
-      <div class="gallery-item reveal-up" data-category="renovation" style="--delay:0.25s">
-        <div class="gallery-img" style="background: linear-gradient(135deg, #7c2d12 0%, #431407 100%);">
-          <div class="gallery-placeholder">
-            <svg viewBox="0 0 80 60" fill="none"><path d="M10 48L40 12L70 48H10Z" stroke="white" stroke-width="2" fill="white" fill-opacity=".08"/></svg>
-            <span>Photo chantier</span>
-          </div>
-        </div>
-        <div class="gallery-info">
-          <span class="gallery-cat">Rénovation</span>
-          <h4>Démoussage + hydrofugation · Mantes</h4>
-          <p>Nettoyage HP + traitement anti-mousse 10 ans</p>
         </div>
       </div>
 
