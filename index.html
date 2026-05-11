@@ -6,6 +6,7 @@
   <title>Le Couvreur — Expert Toiture</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
 </head>
@@ -23,6 +24,7 @@
       <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#avantapres">Avant/Après</a></li>
+      <li><a href="#zones">Zones</a></li>
       <li><a href="#avis">Avis</a></li>
       <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
     </ul>
@@ -530,6 +532,18 @@
   </div>
 </section>
 
+<!-- ═══════════════════ ZONES D'INTERVENTION ═══════════════════ -->
+<section class="zones" id="zones">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Déplacement</span>
+      <h2 class="section-title">Zones <span class="gradient-text">d'intervention</span></h2>
+      <p class="section-subtitle">Nous intervenons dans un rayon de 80 km autour de notre siège à Versailles.</p>
+    </div>
+    <div class="zones-map reveal-up" id="zonesMap"></div>
+  </div>
+</section>
+
 <!-- ═══════════════════ AVIS ═══════════════════ -->
 <section class="avis" id="avis">
   <div class="container">
@@ -755,6 +769,7 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

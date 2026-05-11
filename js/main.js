@@ -223,6 +223,48 @@ lightbox.addEventListener('touchend', e => {
   });
 })();
 
+// ─── Carte zones d'intervention ───
+(function () {
+  const mapEl = document.getElementById('zonesMap');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  const versailles = [48.8014, 2.1301];
+
+  const map = L.map('zonesMap', {
+    center: versailles,
+    zoom: 9,
+    scrollWheelZoom: false,
+    zoomControl: true,
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  L.circle(versailles, {
+    radius: 80000,
+    color: '#f59e0b',
+    fillColor: '#f59e0b',
+    fillOpacity: 0.07,
+    weight: 2,
+    opacity: 0.5,
+  }).addTo(map);
+
+  const icon = L.divIcon({
+    className: '',
+    html: '<div class="zone-pin"></div>',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
+    popupAnchor: [0, -14],
+  });
+
+  L.marker(versailles, { icon })
+    .addTo(map)
+    .bindPopup('<strong>Le Couvreur</strong><br>Siège social — Versailles (78)')
+    .openPopup();
+})();
+
 // ─── Contact form ───
 const form = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
