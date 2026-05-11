@@ -223,6 +223,168 @@ lightbox.addEventListener('touchend', e => {
   });
 })();
 
+// ─── Météo & Vigilance ───
+(function () {
+  const loading = document.getElementById('meteoLoading');
+  const content = document.getElementById('meteoContent');
+  const denied  = document.getElementById('meteoDenied');
+  if (!content) return;
+
+  const WMO = {
+    0:  ['Ciel dégagé','☀️'],   1:  ['Peu nuageux','🌤️'],
+    2:  ['Partiellement nuageux','⛅'], 3: ['Couvert','☁️'],
+    45: ['Brouillard','🌫️'],    48: ['Brouillard givrant','🌫️'],
+    51: ['Bruine légère','🌦️'], 53: ['Bruine','🌦️'],   55: ['Bruine dense','🌧️'],
+    61: ['Pluie légère','🌧️'],  63: ['Pluie modérée','🌧️'], 65: ['Pluie forte','🌧️'],
+    71: ['Neige légère','❄️'],   73: ['Neige modérée','❄️'], 75: ['Neige forte','❄️'],
+    77: ['Grains de neige','🌨️'],
+    80: ['Averses légères','🌦️'], 81: ['Averses','🌦️'], 82: ['Averses violentes','⛈️'],
+    85: ['Averses de neige','🌨️'], 86: ['Averses de neige fortes','🌨️'],
+    95: ['Orage','⛈️'], 96: ['Orage avec grêle','⛈️'], 99: ['Orage violent','⛈️'],
+  };
+
+  const LEVELS = {
+    vert:   { label: 'Aucune vigilance',   color: '#22c55e', bg: 'rgba(34,197,94,0.1)',   icon: '🟢' },
+    jaune:  { label: 'Vigilance jaune',    color: '#eab308', bg: 'rgba(234,179,8,0.12)',  icon: '🟡' },
+    orange: { label: 'Vigilance orange',   color: '#f97316', bg: 'rgba(249,115,22,0.15)', icon: '🟠' },
+    rouge:  { label: 'Vigilance rouge',    color: '#ef4444', bg: 'rgba(239,68,68,0.15)',  icon: '🔴' },
+  };
+  const PRIO = { vert: 0, jaune: 1, orange: 2, rouge: 3 };
+
+  function level(gust, code) {
+    const storm = [95, 96, 99].includes(code);
+    if (gust >= 117 || (storm && gust >= 89)) return 'rouge';
+    if (gust >= 89  || (storm && gust >= 70)) return 'orange';
+    if (gust >= 70  || storm)                  return 'jaune';
+    return 'vert';
+  }
+
+  function fmtDatetime(iso) {
+    return new Date(iso).toLocaleString('fr-FR', { weekday:'long', day:'numeric', month:'long', hour:'2-digit', minute:'2-digit' });
+  }
+
+  async function getCity(lat, lon) {
+    try {
+      const r = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, { headers: { 'Accept-Language': 'fr' } });
+      const d = await r.json();
+      return d.address.city || d.address.town || d.address.village || d.address.municipality || 'Votre région';
+    } catch { return 'Votre région'; }
+  }
+
+  async function getWeather(lat, lon) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}`
+      + `&current=temperature_2m,wind_speed_10m,wind_gusts_10m,weather_code,precipitation`
+      + `&hourly=wind_speed_10m,wind_gusts_10m,weather_code`
+      + `&forecast_days=4&wind_speed_unit=kmh&timezone=auto`;
+    const r = await fetch(url);
+    return r.json();
+  }
+
+  function peakAlert(hourly) {
+    const now = new Date();
+    let best = 'vert', maxGust = 0, start = null, end = null;
+    for (let i = 0; i < Math.min(hourly.time.length, 72); i++) {
+      if (new Date(hourly.time[i]) < now) continue;
+      const g = hourly.wind_gusts_10m[i];
+      const lv = level(g, hourly.weather_code[i]);
+      if (PRIO[lv] > PRIO[best]) best = lv;
+      if (g > maxGust) { maxGust = g; }
+      if (lv !== 'vert') { if (!start) start = hourly.time[i]; end = hourly.time[i]; }
+    }
+    return { level: best, gust: maxGust, start, end };
+  }
+
+  function render(city, data) {
+    const cur = data.current;
+    const h   = data.hourly;
+    const [wLabel, wIcon] = WMO[cur.weather_code] || ['Variable', '🌡️'];
+    const alert = peakAlert(h);
+    const al = LEVELS[alert.level];
+
+    // next 24h bars
+    const now = new Date();
+    const bars = [];
+    for (let i = 0; i < h.time.length && bars.length < 24; i++) {
+      if (new Date(h.time[i]) >= now) bars.push({ t: h.time[i], g: h.wind_gusts_10m[i], c: h.weather_code[i] });
+    }
+    const maxG = Math.max(...bars.map(b => b.g), 30);
+    const barsHTML = bars.map((b, idx) => {
+      const lv = level(b.g, b.c);
+      const pct = Math.max(Math.round((b.g / Math.max(maxG, 120)) * 100), 4);
+      const hr = new Date(b.t).toLocaleString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+      const lbl = idx % 6 === 0 ? `<span class="meteo-bar-label">${hr}</span>` : '';
+      return `<div class="meteo-bar-wrap"><div class="meteo-bar" style="height:${pct}%;background:${LEVELS[lv].color}" title="${Math.round(b.g)} km/h · ${hr}"></div>${lbl}</div>`;
+    }).join('');
+
+    let alertHTML;
+    if (alert.level === 'vert') {
+      alertHTML = `<div class="meteo-alert" style="--al-color:${al.color};--al-bg:${al.bg}">
+        <span class="meteo-alert-icon">${al.icon}</span>
+        <div><strong>${al.label}</strong><p>Aucune perturbation significative prévue dans les 72 prochaines heures.</p></div>
+      </div>`;
+    } else {
+      const typeLabel = ['rouge','orange'].includes(alert.level) ? 'VENT VIOLENT' : 'CONDITIONS DÉFAVORABLES';
+      alertHTML = `<div class="meteo-alert meteo-alert--active" style="--al-color:${al.color};--al-bg:${al.bg}">
+        <span class="meteo-alert-icon">${al.icon}</span>
+        <div>
+          <strong>${al.label} — ${typeLabel}</strong>
+          <p>Rafales pouvant atteindre <strong>${Math.round(alert.gust)} km/h</strong></p>
+          ${alert.start ? `<p>Début prévu : <strong>${fmtDatetime(alert.start)}</strong></p>` : ''}
+          ${alert.end   ? `<p>Fin estimée : <strong>${fmtDatetime(alert.end)}</strong></p>`   : ''}
+        </div>
+      </div>`;
+    }
+
+    const now2 = new Date();
+    const updated = now2.toLocaleString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+
+    content.innerHTML = `
+      <div class="meteo-header">
+        <div class="meteo-location">📍 <strong>${city}</strong></div>
+        <div class="meteo-updated">Mis à jour à ${updated}</div>
+      </div>
+      <div class="meteo-current">
+        <div class="meteo-main">
+          <span class="meteo-icon">${wIcon}</span>
+          <span class="meteo-temp">${Math.round(cur.temperature_2m)}°C</span>
+          <span class="meteo-desc">${wLabel}</span>
+        </div>
+        <div class="meteo-stats">
+          <div class="meteo-stat"><span class="meteo-stat-icon">💨</span><span class="meteo-stat-val">${Math.round(cur.wind_speed_10m)} km/h</span><small>Vent</small></div>
+          <div class="meteo-stat"><span class="meteo-stat-icon">🌬️</span><span class="meteo-stat-val">${Math.round(cur.wind_gusts_10m)} km/h</span><small>Rafales</small></div>
+          <div class="meteo-stat"><span class="meteo-stat-icon">🌧️</span><span class="meteo-stat-val">${cur.precipitation} mm</span><small>Précip.</small></div>
+        </div>
+      </div>
+      ${alertHTML}
+      <div class="meteo-forecast">
+        <div class="meteo-forecast-label">Rafales sur les 24 prochaines heures</div>
+        <div class="meteo-bars">${barsHTML}</div>
+      </div>`;
+
+    loading.style.display = 'none';
+    content.style.display = 'block';
+  }
+
+  function load() {
+    navigator.geolocation.getCurrentPosition(
+      async pos => {
+        const { latitude: lat, longitude: lon } = pos.coords;
+        try {
+          const [weather, city] = await Promise.all([getWeather(lat, lon), getCity(lat, lon)]);
+          render(city, weather);
+        } catch {
+          loading.innerHTML = '<p style="color:#f87171;padding:40px;text-align:center">Erreur de chargement météo.</p>';
+        }
+      },
+      () => { loading.style.display = 'none'; denied.style.display = 'block'; },
+      { timeout: 10000 }
+    );
+  }
+
+  load();
+  setInterval(load, 30 * 60 * 1000);
+})();
+
 // ─── Carte zones d'intervention ───
 (function () {
   const mapEl = document.getElementById('zonesMap');
