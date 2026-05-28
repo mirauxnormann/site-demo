@@ -549,6 +549,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
 .gallery-item.large { grid-column: span 2; }
+.gallery-item.full-img { grid-row: span 2; }
+.gallery-item.full-img .gallery-img.photo { background: #f0f9ff; }
+.gallery-item.full-img .gallery-img.photo img { object-fit: contain; object-position: center center; }
 
 .gallery-img {
   width: 100%; height: 100%;
