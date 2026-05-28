@@ -171,7 +171,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-shrink: 0;
 }
 .logo-img { width: 36px; height: 36px; }
-.logo-text { font-size: 1.1rem; font-weight: 400; letter-spacing: 0.02em; }
+.logo-text { font-size: 0.9rem; font-weight: 400; letter-spacing: 0.02em; white-space: nowrap; }
 .logo-text strong { font-weight: 800; }
 
 .nav-links {
@@ -309,7 +309,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-brand-name {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 5.6rem);
+  font-size: clamp(2rem, 6vw, 4.2rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #fff;
