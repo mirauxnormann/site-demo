@@ -1073,8 +1073,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .meteo-spinner {
   width: 36px; height: 36px;
-  border: 3px solid rgba(245,158,11,0.2);
-  border-top-color: #f59e0b;
+  border: 3px solid rgba(14,165,233,0.2);
+  border-top-color: #0ea5e9;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -1189,9 +1189,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+  .meteo { padding: 72px 0; }
+  .meteo-content { padding: 18px; }
+  .meteo-loading { padding: 40px 20px; }
+  .meteo-denied { padding: 24px 16px; }
+  .meteo-widget { border-radius: 16px; margin: 0 4px; }
+}
 @media (max-width: 600px) {
-  .meteo-current { flex-direction: column; }
-  .meteo-stats { gap: 14px; }
+  .meteo { padding: 60px 0; }
+  .meteo-content { padding: 14px; }
+  .meteo-current {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px;
+  }
+  .meteo-main { justify-content: center; }
+  .meteo-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+  .meteo-stat {
+    background: rgba(14,165,233,0.06);
+    border-radius: 10px;
+    padding: 10px 4px;
+    min-width: unset;
+  }
+  .meteo-alert { padding: 12px 14px; gap: 10px; }
+  .meteo-alert strong { font-size: 0.82rem; }
+  .meteo-forecast-label { font-size: 0.65rem; }
+  .meteo-bars { height: 56px; }
 }
 
 /* ════════════════════════════════════
