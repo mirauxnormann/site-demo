@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   LE COUVREUR — Main JS
+   LE COUVREUR — Main JS · La Réunion (974)
    ═══════════════════════════════════════════════ */
 
 // ─── Navbar scroll effect ───
@@ -244,10 +244,10 @@ lightbox.addEventListener('touchend', e => {
   };
 
   const LEVELS = {
-    vert:   { label: 'Aucune vigilance',   color: '#22c55e', bg: 'rgba(34,197,94,0.1)',   icon: '🟢' },
-    jaune:  { label: 'Vigilance jaune',    color: '#eab308', bg: 'rgba(234,179,8,0.12)',  icon: '🟡' },
-    orange: { label: 'Vigilance orange',   color: '#f97316', bg: 'rgba(249,115,22,0.15)', icon: '🟠' },
-    rouge:  { label: 'Vigilance rouge',    color: '#ef4444', bg: 'rgba(239,68,68,0.15)',  icon: '🔴' },
+    vert:   { label: 'Pas de vigilance cyclonique', color: '#22c55e', bg: 'rgba(34,197,94,0.1)',   icon: '🟢' },
+    jaune:  { label: 'Pré-alerte cyclonique',       color: '#eab308', bg: 'rgba(234,179,8,0.12)',  icon: '🟡' },
+    orange: { label: 'Alerte cyclonique niveau 1',  color: '#f97316', bg: 'rgba(249,115,22,0.15)', icon: '🟠' },
+    rouge:  { label: 'Alerte cyclonique niveau 2',  color: '#ef4444', bg: 'rgba(239,68,68,0.15)',  icon: '🔴' },
   };
   const PRIO = { vert: 0, jaune: 1, orange: 2, rouge: 3 };
 
@@ -320,15 +320,15 @@ lightbox.addEventListener('touchend', e => {
     if (alert.level === 'vert') {
       alertHTML = `<div class="meteo-alert" style="--al-color:${al.color};--al-bg:${al.bg}">
         <span class="meteo-alert-icon">${al.icon}</span>
-        <div><strong>${al.label}</strong><p>Aucune perturbation significative prévue dans les 72 prochaines heures.</p></div>
+        <div><strong>${al.label}</strong><p>Aucune perturbation cyclonique significative prévue dans les 72 prochaines heures.</p></div>
       </div>`;
     } else {
-      const typeLabel = ['rouge','orange'].includes(alert.level) ? 'VENT VIOLENT' : 'CONDITIONS DÉFAVORABLES';
+      const typeLabel = ['rouge','orange'].includes(alert.level) ? 'RISQUE CYCLONIQUE' : 'VENTS FORTS';
       alertHTML = `<div class="meteo-alert meteo-alert--active" style="--al-color:${al.color};--al-bg:${al.bg}">
         <span class="meteo-alert-icon">${al.icon}</span>
         <div>
           <strong>${al.label} — ${typeLabel}</strong>
-          <p>Rafales pouvant atteindre <strong>${Math.round(alert.gust)} km/h</strong></p>
+          <p>Rafales cycloniques pouvant atteindre <strong>${Math.round(alert.gust)} km/h</strong></p>
           ${alert.start ? `<p>Début prévu : <strong>${fmtDatetime(alert.start)}</strong></p>` : ''}
           ${alert.end   ? `<p>Fin estimée : <strong>${fmtDatetime(alert.end)}</strong></p>`   : ''}
         </div>
@@ -390,11 +390,11 @@ lightbox.addEventListener('touchend', e => {
   const mapEl = document.getElementById('zonesMap');
   if (!mapEl || typeof L === 'undefined') return;
 
-  const versailles = [48.8014, 2.1301];
+  const saintDenis = [-20.8789, 55.4481];
 
   const map = L.map('zonesMap', {
-    center: versailles,
-    zoom: 9,
+    center: saintDenis,
+    zoom: 10,
     scrollWheelZoom: false,
     zoomControl: true,
   });
@@ -404,8 +404,8 @@ lightbox.addEventListener('touchend', e => {
     maxZoom: 19,
   }).addTo(map);
 
-  L.circle(versailles, {
-    radius: 80000,
+  L.circle(saintDenis, {
+    radius: 60000,
     color: '#f59e0b',
     fillColor: '#f59e0b',
     fillOpacity: 0.07,
@@ -421,9 +421,9 @@ lightbox.addEventListener('touchend', e => {
     popupAnchor: [0, -14],
   });
 
-  L.marker(versailles, { icon })
+  L.marker(saintDenis, { icon })
     .addTo(map)
-    .bindPopup('<strong>Le Couvreur</strong><br>Siège social — Versailles (78)')
+    .bindPopup('<strong>Le Couvreur</strong><br>Siège social — Saint-Denis (974)')
     .openPopup();
 })();
 
