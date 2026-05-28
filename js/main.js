@@ -175,51 +175,48 @@ lightbox.addEventListener('touchend', e => {
   if (Math.abs(dx) > 50) lbGo(dx < 0 ? 1 : -1);
 });
 
-// ─── Avant / Après slider ───
+// ─── Avant / Après sliders (multi) ───
 (function () {
-  const slider = document.getElementById('baSlider');
-  const before = document.getElementById('baBefore');
-  const handle = document.getElementById('baHandle');
-  if (!slider) return;
+  let activeSlider = null;
 
-  let dragging = false;
+  document.querySelectorAll('.ba-slider').forEach(slider => {
+    const before = slider.querySelector('.ba-before');
+    const handle = slider.querySelector('.ba-handle');
+    if (!before || !handle) return;
 
-  function setPosition(clientX) {
-    const rect = slider.getBoundingClientRect();
-    let pct = (clientX - rect.left) / rect.width;
-    pct = Math.min(Math.max(pct, 0.03), 0.97);
+    function setPosition(clientX) {
+      const rect = slider.getBoundingClientRect();
+      let pct = (clientX - rect.left) / rect.width;
+      pct = Math.min(Math.max(pct, 0.03), 0.97);
+      before.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
+      handle.style.left = (pct * 100) + '%';
+    }
 
-    before.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
-    handle.style.left = (pct * 100) + '%';
-  }
+    slider.addEventListener('mousedown', e => {
+      activeSlider = { slider, setPosition };
+      slider.classList.add('dragging');
+      setPosition(e.clientX);
+      e.preventDefault();
+    });
 
-  // Mouse
-  slider.addEventListener('mousedown', e => {
-    dragging = true;
-    slider.classList.add('dragging');
-    setPosition(e.clientX);
-    e.preventDefault();
+    slider.addEventListener('touchstart', e => {
+      activeSlider = { slider, setPosition };
+      slider.classList.add('dragging');
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
   });
+
   window.addEventListener('mousemove', e => {
-    if (dragging) setPosition(e.clientX);
+    if (activeSlider) activeSlider.setPosition(e.clientX);
   });
   window.addEventListener('mouseup', () => {
-    dragging = false;
-    slider.classList.remove('dragging');
+    if (activeSlider) { activeSlider.slider.classList.remove('dragging'); activeSlider = null; }
   });
-
-  // Touch
-  slider.addEventListener('touchstart', e => {
-    dragging = true;
-    slider.classList.add('dragging');
-    setPosition(e.touches[0].clientX);
-  }, { passive: true });
   window.addEventListener('touchmove', e => {
-    if (dragging) setPosition(e.touches[0].clientX);
+    if (activeSlider) activeSlider.setPosition(e.touches[0].clientX);
   }, { passive: true });
   window.addEventListener('touchend', () => {
-    dragging = false;
-    slider.classList.remove('dragging');
+    if (activeSlider) { activeSlider.slider.classList.remove('dragging'); activeSlider = null; }
   });
 })();
 

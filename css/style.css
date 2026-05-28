@@ -909,6 +909,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ════════════════════════════════════ */
 .avantapres { padding: 120px 0; }
 
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.ba-item { display: flex; flex-direction: column; gap: 14px; }
+
+.ba-item-label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-accent1);
+  background: rgba(14,165,233,0.08);
+  border: 1px solid rgba(14,165,233,0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  align-self: center;
+}
+
 .slider-wrap {
   max-width: 860px;
   margin: 0 auto;
@@ -930,9 +952,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: block;
   width: 100%;
   height: auto;
-  max-height: 520px;
+  max-height: 340px;
   object-fit: cover;
 }
+.slider-wrap .ba-img { max-height: 520px; }
 
 /* L'image APRÈS est la base (en dessous) */
 .ba-after {
@@ -1010,10 +1033,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   backdrop-filter: blur(6px);
 }
 
+@media (max-width: 900px) {
+  .ba-grid { grid-template-columns: 1fr; gap: 36px; }
+  .ba-img { max-height: 380px; }
+}
 @media (max-width: 600px) {
   .ba-btn { width: 40px; height: 40px; }
   .ba-btn svg { width: 40px; height: 40px; }
-  .ba-img { max-height: 300px; }
+  .ba-img { max-height: 260px; }
 }
 
 /* ════════════════════════════════════
