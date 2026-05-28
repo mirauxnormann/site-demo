@@ -390,41 +390,51 @@ lightbox.addEventListener('touchend', e => {
   const mapEl = document.getElementById('zonesMap');
   if (!mapEl || typeof L === 'undefined') return;
 
-  const saintDenis = [-20.8789, 55.4481];
+  const reunionCenter = [-21.115, 55.536];
 
   const map = L.map('zonesMap', {
-    center: saintDenis,
+    center: reunionCenter,
     zoom: 10,
     scrollWheelZoom: false,
     zoomControl: true,
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
     maxZoom: 19,
   }).addTo(map);
 
-  L.circle(saintDenis, {
-    radius: 60000,
-    color: '#f59e0b',
-    fillColor: '#f59e0b',
-    fillOpacity: 0.07,
-    weight: 2,
-    opacity: 0.5,
-  }).addTo(map);
-
-  const icon = L.divIcon({
+  const mainIcon = L.divIcon({
     className: '',
-    html: '<div class="zone-pin"></div>',
-    iconSize: [16, 16],
-    iconAnchor: [8, 8],
-    popupAnchor: [0, -14],
+    html: '<div class="zone-pin zone-pin--main"></div>',
+    iconSize: [20, 20],
+    iconAnchor: [10, 10],
+    popupAnchor: [0, -16],
   });
 
-  L.marker(saintDenis, { icon })
-    .addTo(map)
-    .bindPopup('<strong>Le Couvreur</strong><br>Siège social — Saint-Denis (974)')
-    .openPopup();
+  const cityIcon = L.divIcon({
+    className: '',
+    html: '<div class="zone-pin zone-pin--city"></div>',
+    iconSize: [12, 12],
+    iconAnchor: [6, 6],
+    popupAnchor: [0, -10],
+  });
+
+  const cities = [
+    { name: 'Saint-Denis', coords: [-20.879, 55.448], main: true,  label: '<strong>Le Couvreur</strong><br>Siège — Saint-Denis (974)' },
+    { name: 'Saint-Paul',   coords: [-21.008, 55.274], main: false, label: '<strong>Saint-Paul</strong><br>Zone d\'intervention' },
+    { name: 'Saint-Pierre', coords: [-21.339, 55.477], main: false, label: '<strong>Saint-Pierre</strong><br>Zone d\'intervention' },
+    { name: 'Le Tampon',    coords: [-21.277, 55.525], main: false, label: '<strong>Le Tampon</strong><br>Zone d\'intervention' },
+    { name: 'Saint-Leu',    coords: [-21.149, 55.284], main: false, label: '<strong>Saint-Leu</strong><br>Zone d\'intervention' },
+    { name: 'Saint-Benoît', coords: [-21.033, 55.712], main: false, label: '<strong>Saint-Benoît</strong><br>Zone d\'intervention' },
+  ];
+
+  cities.forEach(city => {
+    const marker = L.marker(city.coords, { icon: city.main ? mainIcon : cityIcon })
+      .addTo(map)
+      .bindPopup(city.label);
+    if (city.main) marker.openPopup();
+  });
 })();
 
 // ─── Contact form ───
