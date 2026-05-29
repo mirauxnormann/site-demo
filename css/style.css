@@ -358,6 +358,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   0%,100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(0.85); }
 }
+.hero-badge-free {
+  border-color: rgba(249,115,22,0.4);
+  color: #fed7aa;
+  background: rgba(249,115,22,0.08);
+  margin-top: -18px;
+}
+.hero-badge-free svg { width: 14px; height: 14px; color: var(--c-accent2); }
 
 .hero-title {
   font-family: var(--font-serif);
@@ -494,6 +501,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: rgba(249,115,22,0.08);
   color: var(--c-accent2);
 }
+
+.service-card-free {
+  grid-column: 1 / -1;
+  background: linear-gradient(90deg, rgba(74,222,128,0.06) 0%, var(--c-surface) 60%);
+  border-top: 2px solid rgba(74,222,128,0.35);
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.service-icon-free {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+.service-free-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: #16a34a;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.service-free-cta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #16a34a;
+  white-space: nowrap;
+  margin-left: auto;
+  transition: color 0.2s;
+}
+.service-free-cta:hover { color: #15803d; }
 
 .featured-badge {
   position: absolute;
