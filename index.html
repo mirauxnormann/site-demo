@@ -304,9 +304,26 @@
           <div class="calc-field">
             <label class="calc-label">Complexité</label>
             <div class="calc-toggle-wrap">
-              <button class="calc-toggle active" data-complex="1.0">Simple</button>
-              <button class="calc-toggle" data-complex="1.25">Complexe</button>
+              <button class="calc-toggle active" data-complex="1.0" data-group="complex">Simple (2 pans)</button>
+              <button class="calc-toggle" data-complex="1.28" data-group="complex">Complexe (lucarnes, noues)</button>
             </div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label">Accès au chantier</label>
+          <div class="calc-toggle-wrap">
+            <button class="calc-toggle active" data-acces="1.0" data-group="acces">Facile</button>
+            <button class="calc-toggle" data-acces="1.20" data-group="acces">Difficile <span class="calc-toggle-hint">(échafaudage)</span></button>
+            <button class="calc-toggle" data-acces="1.42" data-group="acces">Hauts / Cirques</button>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label">Type d'intervention</label>
+          <div class="calc-toggle-wrap">
+            <button class="calc-toggle active" data-urgence="1.0" data-group="urgence">Travaux planifiés</button>
+            <button class="calc-toggle calc-toggle-urgent" data-urgence="1.35" data-group="urgence">Urgence post-cyclone <span class="calc-toggle-hint">(+35 %)</span></button>
           </div>
         </div>
 
@@ -344,8 +361,19 @@
               <span class="calc-detail-val" id="calc-zone-label">Saint-Denis</span>
             </div>
           </div>
+          <div class="calc-detail">
+            <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h14" stroke="currentColor" stroke-width="1.3"/><path d="M7 5V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13 5V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div>
+              <span class="calc-detail-label">Dont fournitures estimées</span>
+              <span class="calc-detail-val" id="calc-materiaux">≈ 2 800 €</span>
+            </div>
+          </div>
         </div>
-        <p class="calc-disclaimer">Estimation non contractuelle. L'état de la charpente, l'accès au chantier et les matériaux choisis peuvent modifier ce montant. Un devis précis et gratuit est établi sur place.</p>
+        <div class="calc-min-notice" id="calc-min-notice" style="display:none">
+          <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="11" r="0.8" fill="currentColor"/></svg>
+          Minimum de prestation appliqué (déplacement + installation)
+        </div>
+        <p class="calc-disclaimer">Estimation non contractuelle. Les prix incluent la main d'œuvre et les fournitures standard. L'état de la charpente et les matériaux spécifiques peuvent modifier ce montant. Devis gratuit établi sur place.</p>
         <a href="#contact" class="btn btn-primary calc-cta">
           <span>Obtenir un devis gratuit</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

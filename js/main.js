@@ -466,20 +466,21 @@ sections.forEach(s => navObserver.observe(s));
 
 // ─── Calculateur de devis ───
 const TARIFS = {
-  couverture: { min: 55, max: 80,  label: 'Couverture tôle bac acier' },
-  renovation:  { min: 75, max: 120, label: 'Rénovation anti-cyclone' },
-  isolation:   { min: 35, max: 60,  label: 'Isolation thermique' },
-  zinguerie:   { min: 40, max: 65,  label: 'Zinguerie & étanchéité' },
-  nettoyage:   { min: 8,  max: 18,  label: 'Nettoyage & démoussage' },
+  couverture: { min: 85,  max: 135, label: 'Couverture neuve tôle bac acier', matPct: 0.45 },
+  renovation:  { min: 125, max: 210, label: 'Rénovation & renforcement anti-cyclone', matPct: 0.38 },
+  isolation:   { min: 55,  max: 95,  label: 'Isolation thermique sous toiture', matPct: 0.52 },
+  zinguerie:   { min: 65,  max: 115, label: 'Zinguerie & étanchéité', matPct: 0.42 },
+  nettoyage:   { min: 18,  max: 35,  label: 'Nettoyage & traitement démoussage', matPct: 0.12 },
 };
 const DUREES = [
-  { max: 25,  label: '1 jour' },
+  { max: 25,  label: '1 journée' },
   { max: 50,  label: '1 à 2 jours' },
   { max: 90,  label: '2 à 4 jours' },
   { max: 150, label: '4 à 7 jours' },
   { max: 220, label: '1 à 2 semaines' },
   { max: 999, label: '2 à 4 semaines' },
 ];
+const PRIX_MINIMUM = 1200;
 
 function animatePrice(el, newText) {
   el.classList.remove('flash');
@@ -495,21 +496,32 @@ function calcDevis() {
   const villeEl = document.getElementById('calc-ville');
   const zone = parseFloat(villeEl.value);
   const zoneName = villeEl.options[villeEl.selectedIndex].text;
-  const complexBtn = document.querySelector('.calc-toggle.active');
+
+  const complexBtn = document.querySelector('.calc-toggle[data-group="complex"].active');
   const complex = complexBtn ? parseFloat(complexBtn.dataset.complex) : 1.0;
+  const accesBtn = document.querySelector('.calc-toggle[data-group="acces"].active');
+  const acces = accesBtn ? parseFloat(accesBtn.dataset.acces) : 1.0;
+  const urgenceBtn = document.querySelector('.calc-toggle[data-group="urgence"].active');
+  const urgence = urgenceBtn ? parseFloat(urgenceBtn.dataset.urgence) : 1.0;
 
   const tarif = TARIFS[type];
-  const rawMin = tarif.min * surface * zone * complex;
-  const rawMax = tarif.max * surface * zone * complex;
-  const minPrice = Math.round(rawMin / 100) * 100;
-  const maxPrice = Math.round(rawMax / 100) * 100;
+  const rawMin = tarif.min * surface * zone * complex * acces * urgence;
+  const rawMax = tarif.max * surface * zone * complex * acces * urgence;
+  const minPrice = Math.max(PRIX_MINIMUM, Math.round(rawMin / 100) * 100);
+  const maxPrice = Math.max(PRIX_MINIMUM + 400, Math.round(rawMax / 100) * 100);
+  const midPrice = (minPrice + maxPrice) / 2;
+  const matEstimate = Math.round(midPrice * tarif.matPct / 100) * 100;
   const duree = DUREES.find(d => surface <= d.max)?.label || '2 à 4 semaines';
+  const minApplied = rawMin < PRIX_MINIMUM;
 
   animatePrice(document.getElementById('calc-min'), minPrice.toLocaleString('fr-FR') + ' €');
   animatePrice(document.getElementById('calc-max'), maxPrice.toLocaleString('fr-FR') + ' €');
   document.getElementById('calc-duree').textContent = duree;
   document.getElementById('calc-prestation-label').textContent = tarif.label;
   document.getElementById('calc-zone-label').textContent = zoneName;
+  document.getElementById('calc-materiaux').textContent = '≈ ' + matEstimate.toLocaleString('fr-FR') + ' €';
+  const notice = document.getElementById('calc-min-notice');
+  if (notice) notice.style.display = minApplied ? 'flex' : 'none';
 }
 
 const calcSurface = document.getElementById('calc-surface');
@@ -528,7 +540,8 @@ if (calcSurface) {
   document.getElementById('calc-ville').addEventListener('change', calcDevis);
   document.querySelectorAll('.calc-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.calc-toggle').forEach(b => b.classList.remove('active'));
+      const group = btn.dataset.group;
+      document.querySelectorAll(`.calc-toggle[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       calcDevis();
     });

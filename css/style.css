@@ -622,6 +622,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .calc-toggle:hover { border-color: var(--c-accent1); color: var(--c-accent1); }
 .calc-toggle.active { border-color: var(--c-accent1); background: rgba(14,165,233,0.07); color: var(--c-accent1); }
+.calc-toggle-hint { font-size: 0.65rem; opacity: 0.7; font-weight: 500; }
+.calc-toggle-urgent.active { border-color: var(--c-accent2); background: rgba(249,115,22,0.07); color: var(--c-accent2); }
+.calc-toggle-urgent:hover { border-color: var(--c-accent2); color: var(--c-accent2); }
+
+.calc-min-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.73rem;
+  color: #fbbf24;
+  background: rgba(251,191,36,0.1);
+  border: 1px solid rgba(251,191,36,0.25);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+.calc-min-notice svg { width: 14px; height: 14px; flex-shrink: 0; color: #fbbf24; }
 
 .calc-result {
   background: var(--c-text);
