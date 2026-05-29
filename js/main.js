@@ -522,7 +522,8 @@ function calcDevis() {
   document.getElementById('calc-duree').textContent = duree;
   document.getElementById('calc-prestation-label').textContent = tarif.label;
   document.getElementById('calc-zone-label').textContent = zoneName;
-  document.getElementById('calc-materiaux').textContent = '≈ ' + matEstimate.toLocaleString('fr-FR') + ' €';
+  const matEl = document.getElementById('calc-materiaux');
+  if (matEl) matEl.textContent = '≈ ' + matEstimate.toLocaleString('fr-FR') + ' €';
   const notice = document.getElementById('calc-min-notice');
   if (notice) notice.style.display = minApplied ? 'flex' : 'none';
 }
