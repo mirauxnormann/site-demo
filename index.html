@@ -24,6 +24,7 @@
       <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#avantapres">Avant/Après</a></li>
+      <li><a href="#calculateur">Calculateur</a></li>
       <li><a href="#zones">Zones</a></li>
       <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
     </ul>
@@ -226,6 +227,129 @@
             <span>Contrat annuel</span>
           </div>
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CALCULATEUR ═══════════════════ -->
+<section class="calculateur" id="calculateur">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Outil en ligne</span>
+      <h2 class="section-title">Calculateur de <span class="gradient-text">devis</span></h2>
+      <p class="section-subtitle">Renseignez votre projet et obtenez une estimation instantanée. Résultat en temps réel, sans engagement.</p>
+    </div>
+    <div class="calc-grid reveal-up">
+
+      <div class="calc-form">
+
+        <div class="calc-field">
+          <label class="calc-label">Surface du toit</label>
+          <div class="calc-slider-wrap">
+            <input type="range" id="calc-surface" min="10" max="300" value="80" step="5" class="calc-slider" />
+            <div class="calc-slider-val"><span id="calc-surface-val">80</span> m²</div>
+          </div>
+          <div class="calc-slider-bounds"><span>10 m²</span><span>300 m²</span></div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label">Type de prestation</label>
+          <div class="calc-types">
+            <label class="calc-type active" data-val="couverture">
+              <input type="radio" name="calc-type" value="couverture" checked />
+              <svg viewBox="0 0 32 32" fill="none"><path d="M4 20L16 6L28 20H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="10" y="20" width="12" height="8" stroke="currentColor" stroke-width="1.8"/></svg>
+              <span>Couverture</span>
+            </label>
+            <label class="calc-type" data-val="renovation">
+              <input type="radio" name="calc-type" value="renovation" />
+              <svg viewBox="0 0 32 32" fill="none"><path d="M4 18L16 5L28 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18V27H24V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span>Rénovation</span>
+            </label>
+            <label class="calc-type" data-val="isolation">
+              <input type="radio" name="calc-type" value="isolation" />
+              <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="10" width="22" height="15" rx="1" stroke="currentColor" stroke-width="1.8"/><path d="M5 14H27" stroke="currentColor" stroke-width="1.3"/><path d="M5 18H27" stroke="currentColor" stroke-width="1.3"/></svg>
+              <span>Isolation</span>
+            </label>
+            <label class="calc-type" data-val="zinguerie">
+              <input type="radio" name="calc-type" value="zinguerie" />
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 26V14L16 6L26 14V26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 26V19H22V26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>Zinguerie</span>
+            </label>
+            <label class="calc-type" data-val="nettoyage">
+              <input type="radio" name="calc-type" value="nettoyage" />
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="7" width="24" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 12H28" stroke="currentColor" stroke-width="1.3"/><circle cx="16" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>Nettoyage</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-field">
+            <label class="calc-label" for="calc-ville">Ville</label>
+            <select id="calc-ville" class="calc-select">
+              <option value="1.00">Saint-Denis</option>
+              <option value="1.02">Saint-Paul</option>
+              <option value="1.04">Saint-Leu</option>
+              <option value="1.05">Saint-Pierre</option>
+              <option value="1.06">Saint-Louis</option>
+              <option value="1.08">Le Tampon</option>
+              <option value="1.12">Saint-Benoît</option>
+              <option value="1.20">Saint-André</option>
+              <option value="1.30">Cilaos / Hauts</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label class="calc-label">Complexité</label>
+            <div class="calc-toggle-wrap">
+              <button class="calc-toggle active" data-complex="1.0">Simple</button>
+              <button class="calc-toggle" data-complex="1.25">Complexe</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="calc-result" id="calc-result">
+        <div class="calc-result-top">
+          <span class="calc-result-label">Estimation instantanée</span>
+          <div class="calc-price-range">
+            <span class="calc-price-min" id="calc-min">4 400 €</span>
+            <span class="calc-price-sep">–</span>
+            <span class="calc-price-max" id="calc-max">6 400 €</span>
+          </div>
+          <span class="calc-result-note">TTC · hors fournitures spéciales</span>
+        </div>
+        <div class="calc-result-details">
+          <div class="calc-detail">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div>
+              <span class="calc-detail-label">Durée estimée</span>
+              <span class="calc-detail-val" id="calc-duree">2 à 4 jours</span>
+            </div>
+          </div>
+          <div class="calc-detail">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5L18 8.5L14 12.5L15 18L10 15.5L5 18L6 12.5L2 8.5L7.5 7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <div>
+              <span class="calc-detail-label">Prestation</span>
+              <span class="calc-detail-val" id="calc-prestation-label">Couverture tôle bac acier</span>
+            </div>
+          </div>
+          <div class="calc-detail">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C6.686 2 4 4.686 4 8c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            <div>
+              <span class="calc-detail-label">Zone d'intervention</span>
+              <span class="calc-detail-val" id="calc-zone-label">Saint-Denis</span>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">Estimation non contractuelle. L'état de la charpente, l'accès au chantier et les matériaux choisis peuvent modifier ce montant. Un devis précis et gratuit est établi sur place.</p>
+        <a href="#contact" class="btn btn-primary calc-cta">
+          <span>Obtenir un devis gratuit</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
     </div>
