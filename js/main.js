@@ -466,11 +466,14 @@ sections.forEach(s => navObserver.observe(s));
 
 // ─── Calculateur de devis ───
 const TARIFS = {
-  couverture: { min: 85,  max: 135, label: 'Couverture neuve tôle bac acier', matPct: 0.45 },
-  renovation:  { min: 125, max: 210, label: 'Rénovation & renforcement anti-cyclone', matPct: 0.38 },
-  isolation:   { min: 55,  max: 95,  label: 'Isolation thermique sous toiture', matPct: 0.52 },
-  zinguerie:   { min: 65,  max: 115, label: 'Zinguerie & étanchéité', matPct: 0.42 },
-  nettoyage:   { min: 18,  max: 35,  label: 'Nettoyage & traitement démoussage', matPct: 0.12 },
+  couverture:  { min: 85,  max: 135, label: 'Couverture neuve tôle bac acier',           matPct: 0.45 },
+  renovation:  { min: 125, max: 210, label: 'Rénovation & renforcement anti-cyclone',     matPct: 0.38 },
+  isolation:   { min: 55,  max: 95,  label: 'Isolation thermique sous toiture',           matPct: 0.52 },
+  zinguerie:   { min: 65,  max: 115, label: 'Zinguerie & étanchéité',                    matPct: 0.42 },
+  nettoyage:   { min: 18,  max: 35,  label: 'Nettoyage démoussage toiture',               matPct: 0.12 },
+  nett_facade: { min: 14,  max: 28,  label: 'Nettoyage & traitement de façade',           matPct: 0.08 },
+  peinture:    { min: 28,  max: 55,  label: 'Peinture façade extérieure',                matPct: 0.42 },
+  ravalement:  { min: 60,  max: 105, label: 'Ravalement de façade complet',              matPct: 0.48 },
 };
 const DUREES = [
   { max: 25,  label: '1 journée' },
