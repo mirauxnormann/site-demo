@@ -178,7 +178,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 10px;
   flex-shrink: 0;
 }
-.logo-img { width: 36px; height: 36px; }
+.logo-img { width: 36px; height: 36px; border-radius: 6px; object-fit: contain; background: #fff; padding: 2px; }
 .logo-text { font-size: 0.9rem; font-weight: 400; letter-spacing: 0.02em; white-space: nowrap; }
 .logo-text strong { font-weight: 800; }
 
@@ -308,7 +308,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-logo {
   width: 110px;
   height: 110px;
-  filter: drop-shadow(0 0 32px rgba(14,165,233,0.6));
+  border-radius: 18px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.92);
+  padding: 6px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
   animation: logoPulse 4s ease-in-out infinite;
 }
 @keyframes logoPulse {
@@ -457,40 +461,40 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .service-card {
   background: var(--c-surface);
-  padding: 24px 22px;
+  padding: 14px 16px;
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
   transition: background 0.22s;
   position: relative;
 }
 .service-card:hover { background: var(--c-surface2); }
 
 .service-icon {
-  width: 44px; height: 44px;
+  width: 36px; height: 36px;
   flex-shrink: 0;
   background: linear-gradient(135deg, var(--c-accent1) 0%, #0284c7 100%);
-  border-radius: 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  padding: 9px;
+  padding: 7px;
 }
 .service-icon svg { width: 100%; height: 100%; }
 
 .service-content { flex: 1; min-width: 0; }
-.service-content h3 { font-size: 0.96rem; font-weight: 700; margin-bottom: 5px; color: var(--c-text); }
-.service-content p { font-size: 0.86rem; color: var(--c-muted); line-height: 1.65; margin-bottom: 10px; }
+.service-content h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; color: var(--c-text); }
+.service-content p { display: none; }
 
-.service-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 .service-tags span {
-  font-size: 0.69rem;
+  font-size: 0.64rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   background: var(--c-surface2);
   color: var(--c-accent1);
-  padding: 3px 8px;
+  padding: 2px 6px;
   border-radius: 3px;
 }
 
@@ -1692,6 +1696,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 8px;
 }
 .footer-bottom p { font-size: 0.8rem; color: rgba(136,136,168,0.6); }
+
+/* ════════════════════════════════════
+   WHATSAPP BUTTON
+════════════════════════════════════ */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 58px; height: 58px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45), 4px 4px 0 rgba(37,211,102,0.2);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.whatsapp-btn svg { width: 30px; height: 30px; }
+.whatsapp-btn:hover { transform: scale(1.1) translate(-2px,-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.55), 6px 6px 0 rgba(37,211,102,0.25); }
+.whatsapp-btn::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.35);
+  animation: waPulse 2.5s ease-in-out infinite;
+}
+@keyframes waPulse {
+  0%,100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 0; }
+}
 
 /* ════════════════════════════════════
    RESPONSIVE
