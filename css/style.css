@@ -684,7 +684,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .calc-detail-label { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
 .calc-detail-val { display: block; font-size: 0.88rem; font-weight: 600; color: #fff; margin-top: 1px; }
 
-.calc-disclaimer { font-size: 0.73rem; color: rgba(255,255,255,0.32); line-height: 1.65; margin-bottom: 24px; }
+.calc-disclaimer-box {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left: 3px solid var(--c-accent2);
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-bottom: 22px;
+}
+.calc-disclaimer-box > svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--c-accent2); margin-top: 1px; }
+.calc-disclaimer-box p { font-size: 0.74rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin: 0; }
+.calc-disclaimer-box strong { color: rgba(255,255,255,0.85); font-weight: 700; }
 .calc-cta { width: 100%; justify-content: center; }
 
 @keyframes priceFlash {
